@@ -48,9 +48,9 @@ namespace madduck.Model
     {
         string serijskiBroj;
 
-        public Lek(string naziv, double cena, int zalihe, string serijskiBroj) : base(naziv, cena, zalihe)
+        public Lek(string naziv, double cena, int zalihe) : base(naziv, cena, zalihe)
         {
-            this.serijskiBroj = serijskiBroj;
+            this.serijskiBroj = "Serijski_broj_leka:" + zalihe;
         }
     }
 
@@ -74,9 +74,9 @@ namespace madduck.Model
     {
         string serijskiBroj;
 
-        public Parking_Karta(string naziv, double cena, int zalihe, string serijskiBroj) : base(naziv, cena, zalihe)
+        public Parking_Karta(string naziv, double cena, int zalihe) : base(naziv, cena, zalihe)
         {
-            this.serijskiBroj = serijskiBroj;
+            this.serijskiBroj = "Serijski_broj_parkingKarte:" + zalihe;
         }
     }
 }

@@ -22,6 +22,7 @@ namespace madduck.Model
             this.brojRacuna = brojRacuna;
             this.idprodavnice = idprodavnice;
             this.kupljeno = new List<Proizvod>(kupljeno);
+            datum = DateTime.Now;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace madduck.Model
@@ -40,7 +41,14 @@ namespace madduck.Model
 
         public void KreirajRacun(List<Proizvod> korpa)
         {
-            racuni.Add(new Racun(racuni.Count + 1, korpa, id_prodavnice));
+            if(proizvodiNaStanju.Count > 0)
+            {
+                racuni.Add(new Racun(racuni.Count + 1, korpa, id_prodavnice));
+                foreach (Proizvod p in korpa)
+                {
+                    proizvodiNaStanju.FirstOrDefault(pSaStanja => pSaStanja.nazivProizvoda == p.nazivProizvoda).zalihe--;
+                }
+            }
         }
 
         

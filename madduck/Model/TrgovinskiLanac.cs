@@ -8,10 +8,17 @@ namespace madduck.Model
     {
         int id_lanca;
         List<Prodavnica> prodavnice;
-
+        
         public TrgovinskiLanac()
         {
             prodavnice = new List<Prodavnica>();
         }
+
+        public void DodajProdavnicu(Prodavnica novaProdavnica)
+        {
+            prodavnice.Add(novaProdavnica);
+        }
+
+
     }
 }
