@@ -34,7 +34,7 @@ namespace madduck.Model
             return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " ---> na stanju: " + zalihe;
         }
 
-        public string UspesnaKupovinaIspis(int kolicina)
+        public virtual string UspesnaKupovinaIspis(int kolicina)
         {
             return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " --->kolicina: " + kolicina;
         }
@@ -42,6 +42,11 @@ namespace madduck.Model
         public string ProizvodNijePronadjenIspis()
         {
             return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " nije pronadjen.";
+        }
+
+        public string ProizvodaNemaNaStanju()
+        {
+            return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda;
         }
     }
 
@@ -68,6 +73,11 @@ namespace madduck.Model
         {
             this.serijskiBroj = "Serijski_broj_leka:" + zalihe;
         }
+
+        public override string ToString()
+        {
+            return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " ---> na stanju: " + zalihe + " [serijski broj: " + serijskiBroj + " ]";
+        }
     }
 
     class Cigare : Proizvod
@@ -93,6 +103,16 @@ namespace madduck.Model
         public Parking_Karta(string naziv, double cena, int zalihe) : base(naziv, cena, zalihe)
         {
             this.serijskiBroj = "Serijski_broj_parkingKarte:" + zalihe;
+        }
+
+        public override string ToString()
+        {
+            return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " ---> na stanju: " + zalihe + " [serijski broj: " + serijskiBroj + " ]";
+        }
+
+        public override string UspesnaKupovinaIspis(int kolicina)
+        {
+            return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " --->kolicina: " + kolicina + " [serijski broj: " + serijskiBroj + " ]";
         }
     }
 }

@@ -66,6 +66,13 @@ namespace madduck
             Console.WriteLine(trafika.IspisiStanje());
 
 
+            Console.WriteLine("___________________________________________________");
+            Console.WriteLine("_________________KUPOVINA 2_________________");
+            trafika.KreirajRacun(new List<Proizvod>() {
+                    new Proizvod("Sandwich",3),
+            }, t_k2);
+
+
         }
     }
 }

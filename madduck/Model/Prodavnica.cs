@@ -53,7 +53,7 @@ namespace madduck.Model
                         }
                         else
                         {
-                            Console.WriteLine("Na stanju nema dovoljno proizvoda: " + p);
+                            Console.WriteLine("Na stanju nema dovoljno proizvoda: " + p.ProizvodaNemaNaStanju());
                         }
                         
                     }
@@ -67,7 +67,12 @@ namespace madduck.Model
                 {
                     Racun r = new Racun(racuni.Count + 1, tempKorpa, id_prodavnice, k);
                     racuni.Add(r);
-                    Console.WriteLine("Prodavnica: " + naziv + " ,uspesno kreirala raucun:\n" + r);
+                    Console.WriteLine("___________________________________________________");
+                    Console.WriteLine("Prodavnica: " + naziv + " ,uspesno kreirala racun:\n" + r);
+                }
+                else
+                {
+                    Console.WriteLine("Na stanju nemamo nista od trazenog.");
                 }
             }
         }
