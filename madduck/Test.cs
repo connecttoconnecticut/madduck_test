@@ -32,7 +32,7 @@ namespace madduck
             };
 
 
-        public static void TestiranjeVerzija1()
+        public static void Testiranje()
         {
             TrgovinskiLanac noviLanac = new TrgovinskiLanac();
 
@@ -44,7 +44,26 @@ namespace madduck
             noviLanac.DodajProdavnicu(apoteka);
             noviLanac.DodajProdavnicu(supermarket);
 
-            
+            Kupac t_k1 = new Kupac("John", "Doe", "225-883");
+            Kupac t_k2 = new Kupac("Joe", "Bloggs", "883-225");
+
+            Console.WriteLine("Stanje PRE kupovine!!!");
+            Console.WriteLine(trafika.IspisiStanje());
+            //Console.WriteLine(apoteka.IspisiStanje());
+            //Console.WriteLine(supermarket.IspisiStanje());
+
+            Console.WriteLine("___________________________________________________");
+            Console.WriteLine("_________________KUPOVINA_________________");
+            trafika.KreirajRacun(new List<Proizvod>() {
+                    new Proizvod("Sandwich",3),
+                    new Proizvod("Chipsy",2),
+                    new Proizvod("Caffetin",3),
+                    new Proizvod("Coca-Cola",3),
+                    new Proizvod("Crvena_zona",10),
+            }, t_k1);
+            Console.WriteLine("___________________________________________________");
+            Console.WriteLine("Stanje POSLE kupovine!!!");
+            Console.WriteLine(trafika.IspisiStanje());
 
 
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace madduck.Model
 {
-    class Kupac
+    public class Kupac
     {
         string ime;
         string prezime;
@@ -23,6 +23,11 @@ namespace madduck.Model
         public void DodajUKorpu(Proizvod p)
         {
             korpa.Add(p);
+        }
+
+        public override string ToString()
+        {
+            return ime + " " + prezime + " " + " ;kontakt: " + broj_telefona;
         }
     }
 }

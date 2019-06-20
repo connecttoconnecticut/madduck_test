@@ -23,9 +23,25 @@ namespace madduck.Model
             this.zalihe = zalihe;
         }
 
+        public Proizvod(string nazivProizvoda, int kolicina)
+        {
+            this.nazivProizvoda = nazivProizvoda;
+            this.zalihe = kolicina;
+        }
+
         public override string ToString()
         {
-            return "Tip Proizvoda: " + base.ToString() + " - naziv prozvoda: " + nazivProizvoda;
+            return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " ---> na stanju: " + zalihe;
+        }
+
+        public string UspesnaKupovinaIspis(int kolicina)
+        {
+            return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " --->kolicina: " + kolicina;
+        }
+
+        public string ProizvodNijePronadjenIspis()
+        {
+            return "Tip Proizvoda: " + this.GetType().Name + " - naziv prozvoda: " + nazivProizvoda + " nije pronadjen.";
         }
     }
 

@@ -18,11 +18,6 @@ namespace madduck.Model
 
         public TipProdavnice tip { get; set; }
 
-        public Prodavnica()
-        {
-
-        }
-
         public Prodavnica(string naziv,int enumerationIndex)
         {
             this.naziv = naziv;
@@ -39,19 +34,57 @@ namespace madduck.Model
             racuni = new List<Racun>();
         }
 
-        public void KreirajRacun(List<Proizvod> korpa)
+        public void KreirajRacun(List<Proizvod> korpa, Kupac k)
         {
             if(proizvodiNaStanju.Count > 0)
             {
-                racuni.Add(new Racun(racuni.Count + 1, korpa, id_prodavnice));
+                var tempKorpa = new List<Proizvod>();
                 foreach (Proizvod p in korpa)
                 {
-                    proizvodiNaStanju.FirstOrDefault(pSaStanja => pSaStanja.nazivProizvoda == p.nazivProizvoda).zalihe--;
+                    var temp = proizvodiNaStanju.FirstOrDefault(pSaStanja => pSaStanja.nazivProizvoda == p.nazivProizvoda);
+                    if(temp != null)
+                    {
+                        if(temp.zalihe >= p.zalihe)
+                        {
+                            temp.zalihe = temp.zalihe - p.zalihe;
+                            p.cena = temp.cena;
+                            tempKorpa.Add(p);
+                            Console.WriteLine("Proizvod " + temp.UspesnaKupovinaIspis(p.zalihe) + " uspesno dodat na racun.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Na stanju nema dovoljno proizvoda: " + p);
+                        }
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine(p.ProizvodNijePronadjenIspis());
+                    }
+                }
+
+                if(tempKorpa.Count > 0)
+                {
+                    Racun r = new Racun(racuni.Count + 1, tempKorpa, id_prodavnice, k);
+                    racuni.Add(r);
+                    Console.WriteLine("Prodavnica: " + naziv + " ,uspesno kreirala raucun:\n" + r);
                 }
             }
         }
 
-        
+        public string IspisiStanje()
+        {
+            string retVal = "-----------_" + naziv + "_-----------\n";
+            retVal += "-------------------------------\n";
+
+
+            foreach (Proizvod p in proizvodiNaStanju)
+            {
+                retVal += p.ToString() + "\n";
+            }
+
+            return retVal;
+        }
 
     }
 }

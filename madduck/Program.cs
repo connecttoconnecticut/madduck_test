@@ -6,6 +6,7 @@ namespace madduck
     {
         static void Main(string[] args)
         {
+            Test.Testiranje();
             Console.WriteLine("Hello World!");
         }
     }
